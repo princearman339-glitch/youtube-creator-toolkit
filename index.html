@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YouTube Creator Toolkit</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #151515;
+      color: white;
+      padding: 25px;
+      max-width: 700px;
+      margin: auto;
+    }
+    h1 { color: #ff5252; }
+    input, textarea, button {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 13px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: 1px solid #555;
+    }
+    button {
+      background: #ff3333;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    textarea { min-height: 130px; }
+    .card {
+      background: #252525;
+      padding: 18px;
+      border-radius: 12px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>YouTube Creator Toolkit 🎬</h1>
+  <p>Your simple workspace for planning YouTube videos.</p>
+
+  <div class="card">
+    <h2>Video Planner</h2>
+    <input id="title" placeholder="Enter your video title">
+    <textarea id="idea" placeholder="Describe your video idea..."></textarea>
+    <button onclick="saveIdea()">Save Video Idea</button>
+    <div id="saved"></div>
+  </div>
+
+  <script>
+    function saveIdea() {
+      const title = document.getElementById("title").value;
+      const idea = document.getElementById("idea").value;
+
+      if (!title.trim() || !idea.trim()) {
+        alert("Please enter both fields!");
+        return;
+      }
+
+      const card = document.createElement("div");
+      card.className = "card";
+      const heading = document.createElement("h3");
+      heading.textContent = title;
+      const description = document.createElement("p");
+      description.textContent = idea;
+      card.append(heading, description);
+      document.getElementById("saved").appendChild(card);
+
+      document.getElementById("title").value = "";
+      document.getElementById("idea").value = "";
+    }
+  </script>
+</body>
+</html>
